@@ -1,0 +1,49 @@
+<h3> Create Cndv</h3>
+<form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label>Id</label>
+        <input type="text" class="form-control" id="id" [(ngModel)]="cndv.id" name="id">
+    </div>
+
+    <div class="form-group">
+        <label>Mã</label>
+        <input type="text" class="form-control" id="ma" [(ngModel)]="cndv.ma" name="ma">
+    </div>
+
+    <div class="form-group">
+        <label>Tên Ngắn</label>
+        <input type="text" class="form-control" id="tenNgan" [(ngModel)]="cndv.tenNgan" name="tenNgan">
+    </div>
+
+    <div class="form-group">
+        <label>Địa chỉ CN</label>
+        <input type="text" class="form-control" id="diaChiCn" [(ngModel)]="cndv.diaChiCn" name="diaChiCn">
+    </div>
+
+    <div class="form-group">
+        <label>Liên hệ điện toán</label>
+        <input type="text" class="form-control" id="diaChiCn" [(ngModel)]="cndv.lienHeDienToan" name="lienHeDienToan">
+    </div>
+
+    <div class="form-group">
+        <label>Liên hệ kế toán</label>
+        <input type="text" class="form-control" id="tenDayDu" [(ngModel)]="cndv.lienHeKeToan" name="lienHeKeToan">
+    </div>
+
+    <div class="form-group">
+        <label>Tên Đầy Đủ</label>
+        <input type="text" class="form-control" id="tenDayDu" [(ngModel)]="cndv.tenDayDu" name="tenDayDu">
+    </div>
+
+    <div class="form-group">
+        <label>Mã số thuế</label>
+        <input type="text" class="form-control" id="tenDayDu" [(ngModel)]="cndv.maSoThue" name="maSoThue">
+    </div>
+
+    <div class="form-group">
+        <label>Người Tạo</label>
+        <input type="text" class="form-control" id="tenDayDu" [(ngModel)]="cndv.nguoiTao" name="nguoiTao">
+    </div>
+    <button class="btn btn-success" type="submit">Submit</button>
+</form>

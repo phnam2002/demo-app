@@ -1,0 +1,86 @@
+<div>
+  <input type="search" name="ma" #ma="ngModel" ngModel style="margin-right :10px ; width : 200px" placeholder="Mã" />
+  <input type="search" name="tenNgan" #tenNgan="ngModel" ngModel style="margin-right :10px ; width : 200px"
+    placeholder="Tên Ngắn" />
+  <input type="search" name="diaChiCn" #diaChiCn="ngModel" ngModel style="margin-right :10px ; width : 200px"
+    placeholder="Địa chỉ CN" />
+  <input type="search" name="tenDayDu" #tenDayDu="ngModel" ngModel style="margin-right :10px ; width : 200px"
+    placeholder="Tên Đầy Đủ" />
+  <input type="search" name="lienHeDienToan" #lienHeDienToan="ngModel" ngModel
+    style="margin-right :10px ; width : 200px" placeholder="Liên hệ điện toán" />
+  <input type="search" name="lienHeKeToan" #lienHeKeToan="ngModel" ngModel style="margin-right :10px ; width : 200px"
+    placeholder="Liên hệ kế toán" />
+  <input type="search" name="maSoThue" #maSoThue="ngModel" ngModel style="margin-right :10px ; width : 200px"
+    placeholder="Mã số thuế" />
+  <input type="date" name="ngayTaoFrom" #ngayTaoFrom="ngModel" ngModel>
+  <input type="date" name="ngayTaoTo" #ngayTaoTo="ngModel" ngModel>
+  <ng-select bindLabel="name" bindValue="id" [(ngModel)]="term" [searchable]="true" [multiple]="false" [clearable]="false" typeToSearchText="Please enter 2 or more characters">
+    <ng-option *ngFor="let cndv of cndvs">
+      {{cndv.ma}}
+    </ng-option>
+  </ng-select>
+  <button
+    (click)="searchCndvs(ma.value,tenNgan.value,diaChiCn.value,tenDayDu.value,lienHeDienToan.value,lienHeKeToan.value,maSoThue.value,ngayTaoFrom.value,ngayTaoTo.value)"
+    style="font-size: 20px;">Search</button>
+</div>
+
+<div class="card-body">
+  <table class="table table-bordered table-striped" class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Mã</th>
+        <th scope="col">Tên Ngắn</th>
+        <th scope="ccol">Địa chỉ CN</th>
+        <th scope="col">Liên hệ điện toán</th>
+        <th scope="col">Liên hệ kế toán</th>
+        <th scope="col">Tên Đầy Đủ</th>
+        <th scope="col">Mã số thuế</th>
+        <th scope="col">Người tạo</th>
+        <th scope="col">Người sửa</th>
+        <th scope="col">Ngày tạo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cndv of cndvs">
+        <td>{{ cndv.id }}</td>
+        <td>{{ cndv.ma }}</td>
+        <td>{{ cndv.tenNgan }}</td>
+        <td>{{ cndv.diaChiCn }}</td>
+        <td>{{ cndv.lienHeDienToan }}</td>
+        <td>{{ cndv.lienHeKeToan }}</td>
+        <td>{{ cndv.tenDayDu }}</td>
+        <td>{{ cndv.maSoThue }}</td>
+        <td>{{ cndv.nguoiTao }}</td>
+        <td>{{ cndv.nguoiSua }}</td>
+        <td>{{ cndv.ngayTao }}</td>
+        <td>
+          <button (click)="updateCndv(cndv)" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+          <button (click)="deleteCndv(cndv)" class="btn btn-danger" style="margin-left :10px"><i
+              class="fa fa-trash-o"></i> </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="homeCndv()" class="btn btn-info" style="width: fit-content;font-size: 20px;">Trang chủ</button>
+  <div style="float : right ; margin-right: 100px;">
+    <p>
+      <span style="margin-right: 10px">Items per page: </span>
+      <select #cricket (change)="updatePageSize($event)">
+        <option *ngFor="let pageSize of pageSizes" [value]="pageSize">
+          {{pageSize}}
+        </option>
+      </select>
+      <span style="margin-right: 15px ;margin-left: 15px"> Page {{pageNumber + 1}} of {{totalPagination}} </span>
+      <button (click)="firstPage()" class="btn btn-info"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+      <button (click)="previousPaging()" class="btn btn-info"><i class="fa fa-chevron-left"
+          aria-hidden="true"></i></button>
+      <button (click)="nextPaging()" class="btn btn-info"><i class="fa fa-chevron-right"
+          aria-hidden="true"></i></button>
+      <button (click)="lastPage()" class="btn btn-info"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+    </p>
+  </div>
+</div>
